@@ -12,10 +12,19 @@
         <![endif]-->
     </head>
     <body>
-        <h1 data-js="city"></h1>
-        <ul data-js="day-list"></ul>
+        <div id="weather-widget"></div>
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script id="weather-widget-tmpl" type="x-tmpl-mustache">
+            <h1>{{cityName}}</h1>
+            <ul>
+                {{#forecast}}
+                <li>{{day}} min: {{minTemp}}, max: {{maxTemp}}</li>
+                {{/forecast}}
+            </ul>
+        </script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>
