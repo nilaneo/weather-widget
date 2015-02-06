@@ -8,12 +8,12 @@ $(document).ready(function() {
 	}
 
 	function prepareDataListItem (listItem) {
-		console.log(listItem.weather.icon);
+		var meteocon = replaceIconWithMeteocon(listItem.weather[0].icon);
 		return {
 			day: getDayByTimestamp(listItem.dt * 1000),
 			minTemp: listItem.temp.min,
 			maxTemp: listItem.temp.max,
-			icon: getIcon(listItem.weather[0].icon)
+			icon: meteocon
 		};
 	}
 
@@ -24,37 +24,37 @@ $(document).ready(function() {
 		};
 	}
 
-	function getIcon (iconName) {
+	function replaceIconWithMeteocon (iconName) {
 		switch (iconName) {
 			case "01d":
 			case "01n":
-			    return 'B';
+			    return "B";
 			case "02d":
 			case "02n":
-				return 'A';
+				return "A";
 			case "03d":
 			case "03n":
-				return 'N';
+				return "N";
 			case "04d":
 			case "04n":
-				return 'Y';
+				return "Y";
 			case "09d":
 			case "09n":
-				return 'R';
+				return "R";
 			case "10d":
 			case "10n":
-				return 'Q';
+				return "Q";
 			case "11d":
 			case "11n":
-				return '0';
+				return "0";
 			case "13d":
 			case "13n":
-				return 'W';
+				return "W";
 			case "50d":
 			case "50n":
-				return 'M';
+				return "M";
 			default:
-				return 'B';
+				return "";
 		}
 	}
 

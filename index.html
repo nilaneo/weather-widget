@@ -20,7 +20,10 @@
             <h1>{{cityName}}</h1>
             <ul>
                 {{#forecast}}
-                <li data-icon="{{icon}}">{{day}} min: {{minTemp}}, max: {{maxTemp}}</li>
+                <li>
+                    <i data-icon="{{icon}}"></i>
+                    {{day}} min: {{minTemp}}, max: {{maxTemp}}
+                </li>
                 {{/forecast}}
             </ul>
         </script>
