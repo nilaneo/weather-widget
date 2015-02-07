@@ -8,12 +8,12 @@ $(document).ready(function() {
 	}
 
 	function prepareDataListItem (listItem) {
-		var meteocon = replaceIconWithMeteocon(listItem.weather[0].icon);
 		return {
 			day: getDayByTimestamp(listItem.dt * 1000),
 			minTemp: listItem.temp.min,
 			maxTemp: listItem.temp.max,
-			icon: meteocon
+			dayTemp: listItem.temp.day,
+			icon: replaceIconWithMeteocon(listItem.weather[0].icon)
 		};
 	}
 

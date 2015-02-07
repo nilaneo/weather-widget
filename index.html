@@ -17,12 +17,25 @@
         <div id="weather-widget"></div>
 
         <script id="weather-widget-tmpl" type="x-tmpl-mustache">
-            <h1>{{cityName}}</h1>
-            <ul>
+            <div class="current-day">
+                <div class="curent-day-temp">
+                    <p>Max: {{forecast.0.maxTemp}}</p>
+                    <p class="text-huge">{{forecast.0.dayTemp}}</p>
+                    <p>Min: {{forecast.0.minTemp}}</p>
+                </div>
+                <i data-icon="{{curIcon}}" class="current-day-icon"></i>
+                <div class="day-and-location">
+                    <p>{{forecast.0.day}}</p>
+                    <p class="text-bold">{{cityName}}</p>
+                </div>
+            </div>
+            <ul class="forecast-week">
                 {{#forecast}}
                 <li>
+                    <span>{{day}}</span>
                     <i data-icon="{{icon}}"></i>
-                    {{day}} min: {{minTemp}}, max: {{maxTemp}}
+                    <span class="text-primary">{{maxTemp}}</span>
+                    <span class="text-secondary text-night">{{minTemp}}</span>
                 </li>
                 {{/forecast}}
             </ul>
