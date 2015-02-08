@@ -9,7 +9,137 @@
     font-style: normal;
 }
 
-[data-icon]:before {
+[data-meteocon-icon]:before {
+    display: inline-block;
 	font-family: 'MeteoconsRegular';
-	content: attr(data-icon);
+	content: attr(data-meteocon-icon);
+    font-style: normal;
+}
+
+[data-meteocon-icon="B"]:before,
+[data-meteocon-icon="A"]:before {
+    color: #f2b502;
+}
+
+[data-meteocon-icon="N"]:before,
+[data-meteocon-icon="Y"]:before,
+[data-meteocon-icon="R"]:before,
+[data-meteocon-icon="Q"]:before,
+[data-meteocon-icon="0"]:before,
+[data-meteocon-icon="W"]:before {
+    color: #168fc6;
+}
+
+[data-meteocon-icon="M"]:before {
+    color: #5db6df;
+}
+
+.ww-clearfix:before,
+.ww-clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    overflow: hidden;
+    zoom: 1; /* IE < 8 */
+}
+
+.ww-clearfix:after {
+    clear: both;
+}
+
+.ww-weather-widget p {
+    margin: 0;
+    padding: 0;
+}
+
+.ww-weather-widget * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing:    border-box;
+    box-sizing:         border-box;
+}
+
+.ww-current-temp {
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.ww-city {
+    font-weight: bold;
+}
+
+.ww-temp-day {
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: bold;
+}
+
+.ww-temp-night {
+    font-size: 12px;
+    font-weight: bold;
+    color: #00b8ff;
+}
+
+.ww-weather-widget {
+    width: 425px;
+    padding: 15px;
+    color: #fff;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    background-color: #282828;
+    text-transform: uppercase;
+}
+
+.ww-current-day {
+    text-align: center;
+}
+
+.ww-current-day-temp {
+    float: left;
+    width: 30%;
+    text-align: left;
+    font-size: 12px;
+}
+
+.ww-icon-current-day {
+    color: #8018eb;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.ww-day-and-location {
+    float: right;
+    width: 30%;
+    padding: 15px 5px 0 0;
+    text-align: right;
+    line-height: 24px;
+}
+
+.ww-forecast-week {
+    margin-top: 15px;
+}
+
+.ww-forecast-day {
+    float: left;
+    width: 60px;
+    height: 130px;
+    padding: 5px;
+    text-align: center;
+}
+
+.ww-forecast-day:nth-child(odd) {
+    background-color: #202020
+}
+
+.ww-icon-wrapper {
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.ww-icon {
+    display: block;
+    margin: 5px 0;
+    font-size: 30px;
+    font-weight: bold;
 }

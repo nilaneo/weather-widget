@@ -13,7 +13,7 @@ $(document).ready(function() {
 			minTemp: listItem.temp.min,
 			maxTemp: listItem.temp.max,
 			dayTemp: listItem.temp.day,
-			icon: replaceIconWithMeteocon(listItem.weather[0].icon)
+			meteoconIcon: replaceIconWithMeteocon(listItem.weather[0].icon)
 		};
 	}
 

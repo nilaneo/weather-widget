@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Weather widget</title>
 
+        <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
 
         <!--[if IE]>
@@ -14,28 +15,30 @@
         <![endif]-->
     </head>
     <body>
-        <div id="weather-widget"></div>
+        <div id="weather-widget" class="ww-weather-widget"></div>
 
         <script id="weather-widget-tmpl" type="x-tmpl-mustache">
-            <div class="current-day">
-                <div class="curent-day-temp">
+            <div class="ww-current-day ww-clearfix">
+                <div class="ww-current-day-temp">
                     <p>Max: {{forecast.0.maxTemp}}</p>
-                    <p class="text-huge">{{forecast.0.dayTemp}}</p>
+                    <p class="ww-current-temp">{{forecast.0.dayTemp}}</p>
                     <p>Min: {{forecast.0.minTemp}}</p>
                 </div>
-                <i data-icon="{{curIcon}}" class="current-day-icon"></i>
-                <div class="day-and-location">
-                    <p>{{forecast.0.day}}</p>
-                    <p class="text-bold">{{cityName}}</p>
+                <i data-meteocon-icon="{{forecast.0.meteoconIcon}}" class="ww-icon-current-day"></i>
+                <div class="ww-day-and-location">
+                    <p class="ww-current-day-name">{{forecast.0.day}}</p>
+                    <p class="ww-city">{{cityName}}</p>
                 </div>
             </div>
-            <ul class="forecast-week">
+            <ul class="ww-forecast-week ww-clearfix">
                 {{#forecast}}
-                <li>
-                    <span>{{day}}</span>
-                    <i data-icon="{{icon}}"></i>
-                    <span class="text-primary">{{maxTemp}}</span>
-                    <span class="text-secondary text-night">{{minTemp}}</span>
+                <li class="ww-forecast-day">
+                    <div class="ww-forecast-day-name">{{day}}</div>
+                    <div class="ww-icon-wrapper">
+                        <i data-meteocon-icon="{{meteoconIcon}}" class="ww-icon"></i>
+                    </div>
+                    <div class="ww-temp-day">{{maxTemp}}</div>
+                    <div class="ww-temp-night">{{minTemp}}</div>
                 </li>
                 {{/forecast}}
             </ul>
