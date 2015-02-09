@@ -15,36 +15,37 @@
         <![endif]-->
     </head>
     <body>
-        <div class="ww-loading-block"></div>
-        <div id="weather-widget" class="ww-weather-widget"></div>
+        <div id="weather-widget"></div>
 
         <script id="weather-widget-tmpl" type="x-tmpl-mustache">
-            <div class="ww-current-day ww-clearfix">
-                <div class="ww-current-day-temp">
-                    <p>Max: {{forecast.0.maxTemp}}</p>
-                    <p class="ww-current-temp">{{forecast.0.dayTemp}}</p>
-                    <p>Min: {{forecast.0.minTemp}}</p>
-                </div>
-                <i data-meteocon-icon="{{forecast.0.meteoconIcon}}" class="ww-icon-current-day"></i>
-                <div class="ww-day-and-location">
-                    <p class="ww-current-day-name">{{forecast.0.day}}</p>
-                    <p class="ww-city">{{cityName}}</p>
-                </div>
-            </div>
-            <ul class="ww-forecast-week ww-clearfix">
-                {{#forecast}}
-                <li class="ww-forecast-day">
-                    <div class="ww-forecast-day-name">{{day}}</div>
-                    <div class="ww-icon-wrapper">
-                        <i data-meteocon-icon="{{meteoconIcon}}" class="ww-icon"></i>
+            <div class="ww-weather-widget">
+                <div class="ww-current-day ww-clearfix">
+                    <div class="ww-current-day-temp">
+                        <div>Max: {{forecast.0.maxTemp}}</div>
+                        <div class="ww-current-temp">{{forecast.0.dayTemp}}</div>
+                        <div>Min: {{forecast.0.minTemp}}</div>
                     </div>
-                    <div class="ww-temp-day">{{maxTemp}}</div>
-                    <div class="ww-temp-night">{{minTemp}}</div>
-                </li>
-                {{/forecast}}
-            </ul>
+                    <i data-meteocon-icon="{{forecast.0.meteoconIcon}}" class="ww-icon-current-day"></i>
+                    <div class="ww-day-and-location">
+                        <div class="ww-current-day-name">{{forecast.0.day}}</div>
+                        <div class="ww-city">{{cityName}}</div>
+                    </div>
+                </div>
+                <ul class="ww-forecast-week ww-clearfix">
+                    {{#forecast}}
+                    <li class="ww-forecast-day">
+                        <div class="ww-forecast-day-name">{{day}}</div>
+                        <div class="ww-icon-wrapper">
+                            <i data-meteocon-icon="{{meteoconIcon}}" class="ww-icon"></i>
+                        </div>
+                        <div class="ww-temp-day">{{maxTemp}}</div>
+                        <div class="ww-temp-night">{{minTemp}}</div>
+                    </li>
+                    {{/forecast}}
+                </ul>
+            </div>
         </script>
-
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
         <script src="js/main.js"></script>
