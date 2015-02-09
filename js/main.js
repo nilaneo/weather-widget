@@ -1,3 +1,12 @@
+var $loading = $('.ww-loading-block').hide();
+$(document)
+	.ajaxStart(function () {
+		$loading.show();
+	})
+	.ajaxStop(function () {
+		$loading.hide();
+	});
+
 $(document).ready(function() {
 	function getDayByTimestamp (timestamp) {
 		return new Date(timestamp).toString().match(/^\w*/)[0];
