@@ -56,16 +56,20 @@ $(document).ready(function() {
 			default:
 				return "";
 		}
-	}	
+	}
 
-	$.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
-		q: "Kiev",
-		units: "metric",
-		cnt: 7
-	}, function(data) {
-		var template = getTemplate(),
-			dataToRender = prepareDateToRender(data),
-			widgetHTML = Mustache.render(template, dataToRender);
-		$("#weather-widget").html(widgetHTML);
-	});
+	function makeWeatherWidget(city, widgetContainer) {
+		$.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
+			q: city,
+			units: "metric",
+			cnt: 7
+		}, function(data) {
+			var template = getTemplate(),
+				dataToRender = prepareDateToRender(data),
+				widgetHTML = Mustache.render(template, dataToRender);
+			widgetContainer.html(widgetHTML);
+		});
+	}
+
+	makeWeatherWidget("Kyiv", $("#weather-widget"));
 });
