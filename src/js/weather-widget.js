@@ -8,9 +8,9 @@
 		return new Date(timestamp).toString().match(/^\w*/)[0];
 	}
 
-	function getTemplate (templateUrl, callback) {
-		$.get(templateUrl, function(data) {
-			callback(data);
+	function getTemplate (options) {
+		return $.get(options.templateUrl).then(function(template) {
+			return template;
 		});
 	}
 
@@ -65,18 +65,28 @@
 		}
 	}
 
-	function makeWeatherWidget(widgetContainer, options) {
-		$.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
+	function getDataFromAPI(options) {
+		return $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
 			q: options.city,
 			units: "metric",
 			cnt: 7
-		}, function(data) {
-			getTemplate(options.templateUrl, function(template) {
-				var	dataToRender = prepareDateToRender(data),
-					widgetHTML = Mustache.render(template, dataToRender);
+		}).then(prepareDateToRender);
+	}
+
+	function getDataAndTemplate (options) {
+		return $.when(getDataFromAPI(options), getTemplate(options));
+	}
+
+	function renderDataAndTemplateToHTML (dataToRender, template) {
+		return Mustache.render(template, dataToRender);
+	}
+
+	function makeWeatherWidget(widgetContainer, options) {
+		getDataAndTemplate(options)
+			.then(renderDataAndTemplateToHTML)
+			.then(function(widgetHTML) {
 				widgetContainer.html(widgetHTML);
-			})
-		});
+			});
 	}
 
 	$.fn.weatherWidget = function weatherWidget(options) {
