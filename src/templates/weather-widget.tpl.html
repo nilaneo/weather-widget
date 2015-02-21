@@ -1,0 +1,26 @@
+<div class="ww-weather-widget">
+    <div class="ww-current-day ww-clearfix">
+        <div class="ww-current-day-temp">
+            <div>Max: {{forecast.0.maxTemp}}</div>
+            <div class="ww-current-temp">{{forecast.0.dayTemp}}</div>
+            <div>Min: {{forecast.0.minTemp}}</div>
+        </div>
+        <i data-meteocon-icon="{{forecast.0.meteoconIcon}}" class="ww-icon-current-day"></i>
+        <div class="ww-day-and-location">
+            <div class="ww-current-day-name">{{forecast.0.day}}</div>
+            <div class="ww-city">{{cityName}}</div>
+        </div>
+    </div>
+    <ul class="ww-forecast-week ww-clearfix">
+        {{#forecast}}
+        <li class="ww-forecast-day">
+            <div class="ww-forecast-day-name">{{day}}</div>
+            <div class="ww-icon-wrapper">
+                <i data-meteocon-icon="{{meteoconIcon}}" class="ww-icon"></i>
+            </div>
+            <div class="ww-temp-day">{{maxTemp}}</div>
+            <div class="ww-temp-night">{{minTemp}}</div>
+        </li>
+        {{/forecast}}
+    </ul>
+</div>

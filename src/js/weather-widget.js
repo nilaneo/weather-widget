@@ -3,8 +3,10 @@
 		return new Date(timestamp).toString().match(/^\w*/)[0];
 	}
 
-	function getTemplate () {
-		return $("#weather-widget-tmpl").html();
+	function getTemplate (callback) {
+		$.get("/src/templates/weather-widget.tpl.html", function(data) {
+			callback(data);
+		});
 	}
 
 	function prepareDataListItem (listItem) {
@@ -64,10 +66,11 @@
 			units: "metric",
 			cnt: 7
 		}, function(data) {
-			var template = getTemplate(),
-				dataToRender = prepareDateToRender(data),
-				widgetHTML = Mustache.render(template, dataToRender);
-			widgetContainer.html(widgetHTML);
+			getTemplate(function(template) {
+				var	dataToRender = prepareDateToRender(data),
+					widgetHTML = Mustache.render(template, dataToRender);
+				widgetContainer.html(widgetHTML);
+			})
 		});
 	}
 
