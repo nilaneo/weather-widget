@@ -1,10 +1,15 @@
 (function() {
+	var DEFAULTS_OPTIONS = {
+		city: 'Kiev',
+		templateUrl: "/src/templates/weather-widget.tpl.html"
+	};
+
 	function getDayByTimestamp (timestamp) {
 		return new Date(timestamp).toString().match(/^\w*/)[0];
 	}
 
-	function getTemplate (callback) {
-		$.get("/src/templates/weather-widget.tpl.html", function(data) {
+	function getTemplate (templateUrl, callback) {
+		$.get(templateUrl, function(data) {
 			callback(data);
 		});
 	}
@@ -60,13 +65,13 @@
 		}
 	}
 
-	function makeWeatherWidget(city, widgetContainer) {
+	function makeWeatherWidget(widgetContainer, options) {
 		$.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
-			q: city,
+			q: options.city,
 			units: "metric",
 			cnt: 7
 		}, function(data) {
-			getTemplate(function(template) {
+			getTemplate(options.templateUrl, function(template) {
 				var	dataToRender = prepareDateToRender(data),
 					widgetHTML = Mustache.render(template, dataToRender);
 				widgetContainer.html(widgetHTML);
@@ -75,6 +80,7 @@
 	}
 
 	$.fn.weatherWidget = function weatherWidget(options) {
-		makeWeatherWidget(options.city, this);
+		var optionsWithDefaults = $.extend({}, DEFAULTS_OPTIONS, options);
+		makeWeatherWidget(this, optionsWithDefaults);
 	};
 }());
