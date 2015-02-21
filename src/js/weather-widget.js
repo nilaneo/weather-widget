@@ -8,10 +8,31 @@
 		return new Date(timestamp).toString().match(/^\w*/)[0];
 	}
 
-	function getTemplate (options) {
-		return $.get(options.templateUrl).then(function(template) {
+	var templateCache = {};
+
+	function getTemplateFromCache (templateUrl) {
+		return templateCache[templateUrl];
+	}
+
+	function addTemplateToCache (templateUrl, templatePromise) {
+		templateCache[templateUrl] = templatePromise;
+	}
+
+	function getTemplateFromServer (templateUrl) {
+		return $.get(templateUrl).then(function(template) {
 			return template;
 		});
+	}
+
+	function getTemplateFromServerAndAddToCache (templateUrl) {
+		var templatePromise = getTemplateFromServer(templateUrl)
+		addTemplateToCache(templateUrl, templatePromise);
+		return templatePromise;
+	}
+
+	function getTemplate (options) {
+		var templateUrl = options.templateUrl;
+		return getTemplateFromCache(templateUrl) || getTemplateFromServerAndAddToCache(templateUrl);
 	}
 
 	function prepareDataListItem (listItem) {
