@@ -57,39 +57,30 @@
 			case "01d":
 			case "01n":
 				return "ww-icon-clear-sky";
-			    // return "B";
 			case "02d":
 			case "02n":
 				return "ww-icon-few-clouds";
-				// return "A";
 			case "03d":
 			case "03n":
 				return "ww-icon-scattered-clouds"
-				// return "N";
 			case "04d":
 			case "04n":
 				return "ww-icon-broken-clouds "
-				// return "Y";
 			case "09d":
 			case "09n":
 				return "ww-icon-shower-rain "
-				// return "R";
 			case "10d":
 			case "10n":
 				return "ww-icon-rain"
-				// return "Q";
 			case "11d":
 			case "11n":
 				return "ww-icon-thunderstorm"
-				// return "0";
 			case "13d":
 			case "13n":
 				return "ww-icon-snow"
-				// return "W";
 			case "50d":
 			case "50n":
 				return "ww-icon-mist"
-				// return "M";
 			default:
 				return "";
 		}
