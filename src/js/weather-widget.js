@@ -41,7 +41,7 @@
 			minTemp: listItem.temp.min,
 			maxTemp: listItem.temp.max,
 			dayTemp: listItem.temp.day,
-			meteoconIcon: replaceIconWithMeteocon(listItem.weather[0].icon)
+			iconClass: replaceIconWithIconClass(listItem.weather[0].icon)
 		};
 	}
 
@@ -52,35 +52,44 @@
 		};
 	}
 
-	function replaceIconWithMeteocon (iconName) {
+	function replaceIconWithIconClass (iconName) {
 		switch (iconName) {
 			case "01d":
 			case "01n":
-			    return "B";
+				return "ww-icon-clear-sky";
+			    // return "B";
 			case "02d":
 			case "02n":
-				return "A";
+				return "ww-icon-few-clouds";
+				// return "A";
 			case "03d":
 			case "03n":
-				return "N";
+				return "ww-icon-scattered-clouds"
+				// return "N";
 			case "04d":
 			case "04n":
-				return "Y";
+				return "ww-icon-broken-clouds "
+				// return "Y";
 			case "09d":
 			case "09n":
-				return "R";
+				return "ww-icon-shower-rain "
+				// return "R";
 			case "10d":
 			case "10n":
-				return "Q";
+				return "ww-icon-rain"
+				// return "Q";
 			case "11d":
 			case "11n":
-				return "0";
+				return "ww-icon-thunderstorm"
+				// return "0";
 			case "13d":
 			case "13n":
-				return "W";
+				return "ww-icon-snow"
+				// return "W";
 			case "50d":
 			case "50n":
-				return "M";
+				return "ww-icon-mist"
+				// return "M";
 			default:
 				return "";
 		}

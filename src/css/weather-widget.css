@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
 @font-face {
     font-family: 'MeteoconsRegular';
     src: url('../fonts/meteocons-webfont.eot');
@@ -9,28 +11,63 @@
     font-style: normal;
 }
 
-[data-meteocon-icon]:before {
+
+
+.ww-icon:before {
     display: inline-block;
 	font-family: 'MeteoconsRegular';
 	content: attr(data-meteocon-icon);
     font-style: normal;
 }
 
-[data-meteocon-icon="B"]:before,
-[data-meteocon-icon="A"]:before {
+.ww-icon-clear-sky:before,
+.ww-icon-few-clouds:before {
     color: #f2b502;
 }
 
-[data-meteocon-icon="N"]:before,
-[data-meteocon-icon="Y"]:before,
-[data-meteocon-icon="R"]:before,
-[data-meteocon-icon="Q"]:before,
-[data-meteocon-icon="0"]:before,
-[data-meteocon-icon="W"]:before {
+.ww-icon-scattered-clouds:before,
+.ww-icon-broken-clouds:before,
+.ww-icon-shower-rain:before,
+.ww-icon-rain:before,
+.ww-icon-thunderstorm:before,
+.ww-icon-snow:before {
     color: #168fc6;
 }
 
-[data-meteocon-icon="M"]:before {
+.ww-icon-clear-sky:before {
+    content: 'B';
+}
+
+.ww-icon-few-clouds:before {
+    content: 'A';
+}
+
+.ww-icon-scattered-clouds:before {
+    content: 'N';
+}
+
+.ww-icon-broken-clouds:before {
+    content: 'Y';
+}
+
+.ww-icon-shower-rain:before {
+    content: 'R';
+}
+
+.ww-icon-rain:before {
+    content: 'Q';
+}
+
+.ww-icon-thunderstorm:before {
+    content: '0';
+}
+
+.ww-icon-snow:before {
+    content: 'W';
+}
+
+.ww-icon-mist:before {
+    content: 'M';
     color: #5db6df;
 }
 
@@ -49,11 +86,11 @@
 
 .ww-weather-widget {
     width: 425px;
-    height: 256px;
+    height: 230px;
     padding: 15px;
     color: #fff;
     font-size: 14px;
-    font-family: Arial, sans-serif;
+    font-family: 'Open Sans', Arial, sans-serif;
     background-color: #282828;
     text-transform: uppercase;
 }
@@ -134,8 +171,12 @@
 }
 
 .ww-icon {
-    display: block;
     margin: 5px 0;
     font-size: 30px;
     font-weight: bold;
+}
+
+.ww-current-day .ww-icon {
+    font-size: 81px;
+    line-height: 81px;
 }
