@@ -1,23 +1,22 @@
 module.exports = function(grunt) {
+  var JS_SRC_PATH = 'src/js/weather-widget.js',
+      JS_DEST_PATH = 'dest/js/weather-widget.min.js',
+      CSS_SRC_PATH = 'src/css/weather-widget.css',
+      CSS_DEST_PATH = 'dest/css/weather-widget.min.css',
+      HTML_SRC_PATH = 'src/templates/weather-widget.tpl.html',
+      HTML_DEST_PATH = 'dest/templates/weather-widget.tpl.min.html';
 
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
     uglify: {
-      my_target: {
-        files: {
-          'dest/js/weather-widget.min.js': 'src/js/weather-widget.js'
-        }
+      dest: {
+        src: JS_SRC_PATH,
+        dest: JS_DEST_PATH
       }
     },
     cssmin: {
-      target: {
-        files: [{
-          expand: true,
-          cwd: 'src/css',
-          src: ['*.css', '!*.min.css'],
-          dest: 'dest/css',
-          ext: '.min.css'
-        }]
+      dest: {
+        src: CSS_SRC_PATH,
+        dest: CSS_DEST_PATH
       }
     },
     htmlmin: {                                     
@@ -25,17 +24,17 @@ module.exports = function(grunt) {
         options: {                                 
           removeComments: true,
           collapseWhitespace: true
-        },
-        files: {                                   
-          'dest/templates/weather-widget.tpl.min.html': ['src/templates/weather-widget.tpl.html']
-        }
+        },                               
+        src: HTML_SRC_PATH,
+        dest: HTML_DEST_PATH
       }
     },
     copy: {
-      main: {
-        files: [
-          {expand: true, cwd: 'src/fonts', src: '*', dest: 'dest/fonts/'}
-        ]
+      dest: {
+        expand: true,
+        cwd: 'src/fonts',
+        src: '*',
+        dest: 'dest/fonts/'
       }
     },
     connect: {
@@ -46,30 +45,25 @@ module.exports = function(grunt) {
       }
     },
     watch: {
+      options: {
+        spawn: false,
+        livereload: true
+      },
       css: {
-        files: '**/*.css',
-        tasks: 'cssmin',
-        options: {
-          spawn: false,
-          livereload: true
-        }
+        files: CSS_SRC_PATH,
+        tasks: 'cssmin'
       },
       js: {
-        files: '**/*.js',
-        tasks: 'uglify',
-        options: {
-          spawn: false,
-          livereload: true
-        }
+        files: JS_SRC_PATH,
+        tasks: 'uglify'
       },
       html: {
-        files: '**/*.html',
-        tasks: 'htmlmin',
-        options: {
-          spawn: false,
-          livereload: true
-        }
+        files: HTML_SRC_PATH,
+        tasks: 'htmlmin'
       }
+    },
+    clean: {
+      dest: 'dest/**/*'
     }
   });
 
@@ -79,8 +73,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
+  grunt.registerTask('build', ['clean', 'copy', 'htmlmin', 'cssmin', 'uglify']);
+  grunt.registerTask('server', ['build', 'connect', 'watch']);
 
-  grunt.registerTask('default', ['copy', 'htmlmin', 'cssmin', 'uglify', 'connect', 'watch']);
+  grunt.registerTask('default', ['build']);
 
 };
