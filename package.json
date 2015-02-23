@@ -1,0 +1,23 @@
+{
+  "name": "weather-widget",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nilaneo/weather-widget.git"
+  },
+  "author": "nilaneo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nilaneo/weather-widget/issues"
+  },
+  "homepage": "https://github.com/nilaneo/weather-widget",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-connect": "^0.8.0",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-cssmin": "^0.12.2",
+    "grunt-contrib-htmlmin": "^0.4.0",
+    "grunt-contrib-uglify": "^0.8.0",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}

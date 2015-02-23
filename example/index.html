@@ -8,7 +8,7 @@
         <title>Weather widget</title>
 
         <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="../src/css/weather-widget.css">
+        <link rel="stylesheet" href="../dest/css/weather-widget.min.css">
 
         <!--[if IE]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -19,12 +19,12 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
-        <script src="../src/js/weather-widget.js"></script>
+        <script src="../dest/js/weather-widget.min.js"></script>
         
         <script>
             $("#weather-widget").weatherWidget({
                 city: "Kyiv",
-                templateUrl: "../src/templates/weather-widget.tpl.html"
+                templateUrl: "../dest/templates/weather-widget.tpl.min.html"
             });
         </script>
     </body>
