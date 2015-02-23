@@ -1,9 +1,9 @@
 <div class="ww-weather-widget">
     <div class="ww-current-day ww-clearfix">
         <div class="ww-current-day-temp">
-            <div>Max: {{forecast.0.maxTemp}}</div>
-            <div class="ww-current-temp">{{forecast.0.dayTemp}}</div>
-            <div>Min: {{forecast.0.minTemp}}</div>
+            <div>Max: {{forecast.0.maxTemp}}&#8451;</div>
+            <div class="ww-current-temp">{{forecast.0.dayTemp}}&#8451;</div>
+            <div>Min: {{forecast.0.minTemp}}&#8451;</div>
         </div>
         <i class="ww-icon ww-icon-current-day {{forecast.0.iconClass}}"></i>
         <div class="ww-day-and-location">
@@ -18,8 +18,8 @@
             <div class="ww-icon-wrapper">
                 <i class="ww-icon {{iconClass}}"></i>
             </div>
-            <div class="ww-temp-day">{{maxTemp}}</div>
-            <div class="ww-temp-night">{{minTemp}}</div>
+            <div class="ww-temp-day">{{maxTemp}}&#8451;</div>
+            <div class="ww-temp-night">{{minTemp}}&#8451;</div>
         </li>
         {{/forecast}}
     </ul>
